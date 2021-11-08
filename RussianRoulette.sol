@@ -39,7 +39,7 @@ contract RussianRoulette{
         losers.push(Player);
     }
     
-    function random() internal returns (uint) {
+    function random() internal returns (uint256) {
         uint randomnumber = uint(keccak256(abi.encodePacked(block.timestamp, msg.sender))) % odds;
         randomnumber = randomnumber + 1;
         return randomnumber;
@@ -62,17 +62,17 @@ contract RussianRoulette{
         for(uint256 i = 0;i<losers.length;i++)
         {
             if(Person==losers[i])
-                return false;
+                return true;
         }
-        return true;
+        return false;
     }
     function isAPlayer(address Person) public view returns(bool){
         for(uint256 i = 0;i<players.length;i++)
         {
             if(Person==players[i])
-                return false;
+                return true;
         }
-        return true;
+        return false;
     }
     
     function getOdds() public view returns(uint256){
